@@ -1,0 +1,27 @@
+######################################################################
+#        ______          __     ____                 __  ______      #
+#       / ____/___  ____/ /__  / __ \____  _____    / / / / __ \     #
+#      / /   / __ \/ __  / _ \/ / / / __ \/ ___/   / /_/ / / / /     #
+#     / /___/ /_/ / /_/ /  __/ /_/ / /_/ (__  )   / __  / /_/ /      #
+#     \____/\____/\__,_/\___/\____/ .___/____/   /_/ /_/\___\_\      #
+#                                /_/                                 #
+######################################################################
+
+# set background
+output * bg /home/aachard/.config/backgrounds/mystical-night-in-town.jpg fill
+output * adaptive_sync off
+
+# include custom sway config
+include "${XDG_CONFIG_HOME:-$HOME/.config}/sway/config.d/*.conf"
+
+# include default sway config
+include '$(/usr/libexec/sway/layered-include "/usr/share/sway/config.d/*.conf" "/etc/sway/config.d/*.conf")'
+
+# Restart kanshi on every reload to reapply output config
+exec_always --no-startup-id sh -c 'pkill kanshi; sleep 1; kanshi'
+
+# Dark theme for GTK3/GTK4 apps (Thunar, etc.)
+# settings.ini files in ~/.config/gtk-3.0/ and gtk-4.0/ gèrent le thème persistant,
+# mais on force aussi gsettings pour synchroniser dconf au cas où
+exec_always gsettings set org.gnome.desktop.interface gtk-theme 'Adwaita-dark'
+exec_always gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
