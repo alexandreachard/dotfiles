@@ -1,0 +1,14 @@
+color=#24273a
+# Configuration esthétique
+indicator-radius=100
+indicator-thickness=7
+line-color=00000000
+ring-color=444444
+inside-color=00000088
+key-hl-color=88cc33
+separator-color=00000000
+
+# Options pratiques
+show-failed-attempts
+clock
+indicator
