@@ -23,7 +23,6 @@
     "format-disconnected": "",
     "format-paused": "",
     "format-stopped": "",
-    // Commands to execute on events
     "on-click": "mpc -q pause && mpc -q prev && mpc -q start"
   },
   "mpd#3": {
@@ -36,7 +35,6 @@
       "paused": "",
       "playing": ""
     },
-    // Commands to execute on events
     "on-click": "mpc toggle"
   },
   "mpd#4": {
@@ -44,7 +42,6 @@
     "format-disconnected": "",
     "format-paused": "",
     "format-stopped": "",
-    // Commands to execute on events
     "on-click": "mpc -q pause && mpc -q next && mpc -q start"
   },
   "custom/swap": {
@@ -88,7 +85,6 @@
     }
   },
   "tray": {
-    // "icon-size": 14,
     "spacing": 5
   },
   "clock": {
