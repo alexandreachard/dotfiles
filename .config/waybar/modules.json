@@ -23,6 +23,7 @@
     "format-disconnected": "",
     "format-paused": "",
     "format-stopped": "",
+    // Commands to execute on events
     "on-click": "mpc -q pause && mpc -q prev && mpc -q start"
   },
   "mpd#3": {
@@ -35,6 +36,7 @@
       "paused": "",
       "playing": ""
     },
+    // Commands to execute on events
     "on-click": "mpc toggle"
   },
   "mpd#4": {
@@ -42,6 +44,7 @@
     "format-disconnected": "",
     "format-paused": "",
     "format-stopped": "",
+    // Commands to execute on events
     "on-click": "mpc -q pause && mpc -q next && mpc -q start"
   },
   "custom/swap": {
@@ -85,6 +88,7 @@
     }
   },
   "tray": {
+    // "icon-size": 14,
     "spacing": 5
   },
   "clock": {
@@ -129,18 +133,28 @@
     "on-click": "alacritty -e btop"
   },
   "temperature": {
-    "thermal-zone": 4,
-    // "hwmon-path": "/sys/class/hwmon/hwmon1/temp1_input",
+    //"thermal-zone": 4,
+    "hwmon-path": "/sys/class/hwmon/hwmon1/temp1_input",
     "critical-threshold": 80,
-    // "format-critical": "{temperatureC}°C ",
+    "format-critical": "{temperatureC}°C ",
     "format": "  {temperatureC}°C"
+  },
+  "power-profiles-daemon": {
+    "format": "{icon} ",
+    "tooltip-format": "Profile: {profile}",
+    "tooltip": true,
+    "format-icons": {
+      "default": "🗲",
+      "performance": "🗲",
+      "balanced": "",
+      "power-saver": "🌱"
+    }
   },
   // Harddisc space used
   "disk": {
     // "interval": 30,
     "format": " {percentage_used}% ",
     "path": "/"
-    //"on-click": "ghostty -e htop"
   },
   // Group Hardware
   "group/hardware": {
