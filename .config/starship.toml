@@ -6,8 +6,8 @@ add_newline = false
 
 [directory]
 style = "bold cyan"
-truncation_length = 8
-truncation_symbol = "…/"
+truncation_length = 3
+truncation_symbol = ""
 
 [git_branch]
 symbol = " "
