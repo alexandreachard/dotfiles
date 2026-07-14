@@ -24,9 +24,5 @@ chars = "\x1b\r"
 [general]
 live_config_reload = true
 import = [
-<<<<<<< HEAD
-	"~/.config/alacritty/themes/themes/tokyo-night.toml"
-=======
 	"~/.config/alacritty/themes/themes/gruvbox-dark.toml"
->>>>>>> 358b11f (add chezmoi config mgmt for dotfiles)
 ]
