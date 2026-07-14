@@ -1,11 +1,6 @@
 
-window.opacity = 0.9
-
-[colors]
-draw_bold_text_with_bright_colors = true
-
 [font]
-size = 16
+size = 17
 
 [font.normal]
 family = "FiraCode Nerd Font"
@@ -14,15 +9,9 @@ style = "Regular"
 [terminal]
 
 [terminal.shell]
-program = "/bin/bash"
+program = "tmux"
 
-[[keyboard.bindings]]
-key = "Return"
-mods = "Shift"
-chars = "\x1b\r"
 
 [general]
 live_config_reload = true
-import = [
-	"~/.config/alacritty/themes/themes/gruvbox-dark.toml"
-]
+import = ["~/.config/alacritty/themes/themes/gruvbox-dark.toml"]
