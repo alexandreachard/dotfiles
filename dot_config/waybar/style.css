@@ -1,0 +1,259 @@
+@import 'colors.css';
+
+/* Reset all styles */
+* {
+  color: @lavender;
+  border: none;
+  border-radius: 0;
+  padding: 0;
+  margin: 0;
+  font-family:
+    'FiraCode Nerd Font', 'Font Awesome 6 Free', FontAwesome, Roboto, Helvetica,
+    Arial, sans-serif;
+}
+
+/* The Main Bar Container */
+window#waybar {
+  background-color: #24273a;
+  background: #24273a;
+  opacity: 1;
+  border: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* Workspaces */
+#workspaces {
+  border-style: none;
+  background-color: transparent;
+  opacity: 1;
+  margin: 0;
+  padding: 0 10px;
+}
+
+#workspaces button {
+  color: @subtext0;
+  margin: 0;
+  padding: 0 8px;
+  background: transparent;
+}
+
+#workspaces button:hover {
+  color: @mauve;
+  box-shadow: none;
+  text-shadow: none;
+  background: transparent;
+}
+
+#workspaces button:hover * {
+  color: @mauve;
+  background-color: transparent;
+}
+
+#workspaces * {
+  color: whitesmoke;
+}
+
+#workspaces button.focused {
+  color: @mauve;
+  background: transparent;
+}
+
+#workspaces button.focused * {
+  color: @mauve;
+}
+
+/* Active Window Title (Uniformized and Flat) */
+#window {
+  color: @text;
+  background-color: transparent;
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  margin: 0;
+  padding: 5px 10px;
+}
+
+window#waybar.empty #window {
+  background-color: transparent;
+  background: transparent;
+}
+
+/* Shared Module Spacing */
+#clock,
+#custom-swap,
+#custom-cava-internal,
+#battery,
+#cpu,
+#memory,
+#disk,
+#idle_inhibitor,
+#temperature,
+#custom-keyboard-layout,
+#backlight,
+#network,
+#pulseaudio,
+#mode,
+#tray,
+#custom-power,
+#custom-updates,
+#custom-launcher,
+#custom-system,
+#custom-vpn,
+#mpd {
+  padding: 5px 10px;
+  border-style: none;
+  background-color: transparent;
+  background: transparent;
+  opacity: 1;
+  margin: 0;
+}
+
+/* Base Styles for Remaining Modules */
+#mpd {
+  color: @mauve;
+}
+
+#mpd.2,
+#mpd.3,
+#mpd.4 {
+  font-size: 14px;
+}
+
+#mode {
+  color: @mauve;
+}
+
+#custom-cava-internal {
+  color: @mauve;
+}
+
+#custom-swap {
+  color: @text;
+}
+
+#clock {
+  color: @sky;
+  margin: 0 10px;
+}
+
+#backlight {
+  color: @yellow;
+}
+
+#battery {
+  color: @green;
+  margin-right: 10px;
+}
+
+#battery.charging {
+  color: #81a1c1;
+}
+
+@keyframes blink {
+  to {
+    color: @red;
+  }
+}
+
+#battery.warning:not(.charging) {
+  color: @yellow;
+}
+
+#battery.critical:not(.charging) {
+  color: #bf616a;
+  animation-name: blink;
+  animation-duration: 0.5s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+#custom-system {
+  color: @sky;
+}
+
+#cpu {
+  color: @sky;
+}
+
+#memory {
+  color: @sky;
+}
+
+#disk {
+  color: @sky;
+}
+
+#network.disabled {
+  color: #bf616a;
+}
+
+#network {
+  color: @green;
+  margin-right: 5px;
+}
+
+#network.disconnected {
+  color: #bf616a;
+}
+
+#custom-updates {
+  color: @green;
+  margin-right: 5px;
+}
+
+#custom-updates.updates-available {
+  color: @peach;
+}
+
+#custom-vpn.disabled {
+  color: #bf616a;
+}
+
+#custom-vpn {
+  color: @green;
+  margin-right: 5px;
+}
+
+#custom-vpn.disconnected {
+  color: #bf616a;
+}
+
+#pulseaudio {
+  color: @flamingo;
+}
+
+#pulseaudio.muted {
+  color: #3b4252;
+}
+
+#temperature {
+  color: @teal;
+}
+
+#temperature.critical {
+  color: @red;
+}
+
+#idle_inhibitor {
+  background-color: #ebcb8b;
+  color: @base;
+}
+
+#tray {
+  margin: 0 10px;
+}
+
+#custom-launcher {
+  color: @mauve;
+}
+
+#custom-power {
+  color: @red;
+}
+
+#custom-keyboard-layout {
+  color: @peach;
+  margin-right: 10px;
+}

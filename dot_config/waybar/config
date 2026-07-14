@@ -1,0 +1,23 @@
+{
+  "layer": "top", // Waybar at top layer
+  "position": "top", // Waybar position (top|bottom|left|right)
+  "height": 30,
+  "margin": "0 0 0 0",
+  "modules-left": [
+    "sway/workspaces",
+    "sway/window",
+    "sway/mode"
+  ],
+  "modules-center": ["clock"],
+  "modules-right": [
+    "backlight",
+    "pulseaudio",
+    "temperature",
+    "power-profiles-daemon",
+    "group/hardware",
+    "battery",
+    "custom/updates",
+    "tray"
+  ],
+  "include": ["~/.config/waybar/modules.json"]
+}
