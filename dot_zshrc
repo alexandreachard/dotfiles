@@ -5,6 +5,9 @@ HISTFILE="$HOME/.zsh_history"
 HISTSIZE=100000
 SAVEHIST=100000
 
+setopt HIST_IGNORE_SPACE
+setopt HIST_IGNORE_DUPS
+setopt SHARE_HISTORY
 
 # ~~~~~~~~~~~~~~~ Prompt ~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -37,16 +40,32 @@ fi
 export LANG="en_US.UTF-8"
 
 
+# ~~~~~~~~~~~~~~~ Zoxide ~~~~~~~~~~~~~~~~~~~~~~~~
+if command -v zoxide > /dev/null ; then
+  eval "$(zoxide init zsh)"
+fi
 # ~~~~~~~~~~~~~~~ Mise ~~~~~~~~~~~~~~~~~~~~~~~~
-
 
 if command -v mise > /dev/null ; then
   eval "$($HOME/.local/bin/mise activate zsh)"
 fi
 
+# ~~~~~~~~~~~~~~~ Path ~~~~~~~~~~~~~~~~~~~~~~~~
+
+path=(
+  $path
+  $HOME/bin
+  $HOME/.local/bin
+  $HOME/.rd/bin
+)
+
+# remove duplicate entries and non-existant directories
+typeset -U path
+path=($^path(N-/))
+
+export PATH
 
 # ~~~~~~~~~~~~~~~ Completion ~~~~~~~~~~~~~~~~~~~~~~~~
-
 
 autoload -Uz compinit && compinit
 
@@ -63,13 +82,19 @@ if command -v mise > /dev/null ; then
   source <(mise completion zsh)
 fi
 
+if command -v kubectl > /dev/null ; then
+  source <(kubectl completion zsh)
+fi
 
 # ~~~~~~~~~~~~~~~ Aliases ~~~~~~~~~~~~~~~~~~~~~~~~
 
-
-alias v=nvim
+alias v='nvim'
+alias vim='nvim'
+alias t='tmux'
 alias gp="git pull"
-alias lg=lazygit
+alias lg='lazygit'
+alias rm='trash -v'
+alias k='kubectl'
 
 if command -v bat > /dev/null ; then
   alias cat="bat"
@@ -82,4 +107,6 @@ if command -v lsd > /dev/null ; then
   alias lla='ls -lgha'
   alias lt='ls --tree'
 fi
+
+alias bta='bluetoothctl connect CC:22:FE:43:1C:9D'
 
