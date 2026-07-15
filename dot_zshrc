@@ -25,7 +25,7 @@ autoload -U promptinit; promptinit
 prompt pure
 
 # enable zsh vi-mode
-bindkey -v
+#bindkey -v
 export KEYTIMEOUT=1 # make switching between modes faster
 
 
@@ -110,3 +110,14 @@ fi
 
 alias bta='bluetoothctl connect CC:22:FE:43:1C:9D'
 
+# ~~~~~~~~~~~~~~~~~~~bindkey~~~~~~~~~~~~~~~~~~~~
+bindkey '^?' backward-delete-char
+bindkey '^[[3~' delete-char
+
+bindkey '^[[H' beginning-of-line
+bindkey '^[[1~' beginning-of-line
+bindkey '^[OH' beginning-of-line
+
+bindkey '^[[F' end-of-line
+bindkey '^[[4~' end-of-line
+bindkey '^[OF' end-of-line
