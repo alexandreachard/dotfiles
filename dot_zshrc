@@ -39,6 +39,9 @@ fi
 
 export LANG="en_US.UTF-8"
 
+if [[ -S "$XDG_RUNTIME_DIR/ssh-agent.socket" ]]; then
+  export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
+fi
 
 # ~~~~~~~~~~~~~~~ Zoxide ~~~~~~~~~~~~~~~~~~~~~~~~
 if command -v zoxide > /dev/null ; then
@@ -88,6 +91,7 @@ fi
 
 # ~~~~~~~~~~~~~~~ Aliases ~~~~~~~~~~~~~~~~~~~~~~~~
 
+alias sudo='sudo '
 alias v='nvim'
 alias vim='nvim'
 alias t='tmux'
