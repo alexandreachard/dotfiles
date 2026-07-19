@@ -43,6 +43,10 @@ if [[ -S "$XDG_RUNTIME_DIR/ssh-agent.socket" ]]; then
   export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
 fi
 
+if [[ -S "$XDG_RUNTIME_DIR/podman/podman.sock" ]]; then
+  export DOCKER_HOST="unix://$XDG_RUNTIME_DIR/podman/podman.sock"
+fi
+
 # ~~~~~~~~~~~~~~~ Zoxide ~~~~~~~~~~~~~~~~~~~~~~~~
 if command -v zoxide > /dev/null ; then
   eval "$(zoxide init zsh)"
@@ -60,6 +64,7 @@ path=(
   $HOME/bin
   $HOME/.local/bin
   $HOME/.rd/bin
+  $HOME/.opencode/bin/
 )
 
 # remove duplicate entries and non-existant directories
