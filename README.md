@@ -1,31 +1,83 @@
-# dotfiles
+# Dotfiles
 
-This is my personal Linux setup, stripped down and optimized for speed. It is a minimal, keyboard-driven environment built to keep me in the terminal and out of menus.
+Personal cross-platform dotfiles managed with Chezmoi and Mise.
 
-## My Tech Stack & Tools
+The goal of this repository is not to build a highly customized desktop environment. It is to maintain a consistent engineering workflow across multiple environments while keeping the setup simple, portable, and reproducible.
 
-- **Window Manager:** Sway (Wayland) with Waybar
-- **Terminal Emulator:** Alacritty
-- **Shell & Multiplexer:** Bash + Tmux
-- **Text Editor:** Neovim / Vim
+Currently used on:
 
-## Repository Structure
+- Fedora Workstation
+- macOS (Apple Silicon)
+- Linux Dev Containers
 
-All my raw config files live inside `.config/` and handle the following:
+## Core Tooling
 
-- `sway/` & `waybar/` - Tiling window management and status bar
-- `alacritty/` - Terminal styling and performance tweaks
-- `tmux/` - Persistent sessions and pane management
-- `.bashrc` & `.bash_profile` - Shell aliases, exports, and custom functions
+- Shell: Zsh
+- Prompt: Pure
+- Terminal Multiplexer: Tmux
+- Editor: Neovim (LazyVim)
+- Runtime Manager: Mise
+- Terminal Emulator: Alacritty
+- Dotfiles Manager: Chezmoi
 
-## Quick Installation
+### Cross-Platform Components
 
-> **Warning:** Running this will overwrite your existing configuration files.
+Shared across Linux and macOS:
 
-Right now, I manage everything manually with symlinks. A migration to a proper manager like Chezmoi or Mise is on the to-do list, but for now, you can link things manually:
+- Zsh
+- Pure Prompt
+- Tmux
+- Neovim
+- Mise
+
+### Linux-Specific Components
+
+Used on Fedora only:
+
+- Sway
+- Waybar
+- Swaylock
+
+Chezmoi automatically applies the appropriate configuration depending on the operating system.
+
+## Installation
+
+Install and apply the dotfiles:
 
 ```bash
-git clone [https://github.com/YOUR_USERNAME/dotfiles.git](https://github.com/YOUR_USERNAME/dotfiles.git) && cd dotfiles
-# Example: Symlink Alacritty config
-ln -sfn $(pwd)/alacritty ~/.config/alacritty
+sh -c "$(curl -fsLS https://get.chezmoi.io)" -- init --apply git@github.com:alexandreachard/dotfiles.git
 ```
+
+Or, if Chezmoi is already installed:
+
+```bash
+chezmoi init --apply git@github.com:alexandreachard/dotfiles.git
+```
+
+## Updating
+
+Update the repository and re-apply changes:
+
+```bash
+chezmoi update
+```
+
+Apply local changes:
+
+```bash
+chezmoi apply
+```
+
+## Philosophy
+
+This repository is an evolving workstation setup.
+
+The focus is on:
+
+- reproducibility
+- portability
+- keyboard-driven workflows
+- terminal-first tooling
+- maintaining the same development experience across multiple machines
+
+New tools and configurations are added when they solve a real problem, not simply for customization.
