@@ -1,1 +1,13 @@
 setup
+
+{{ if ne .chezmoi.os "linux" }}
+.config/sway
+.config/sway/**
+.config/waybar
+.config/waybar/**
+.config/swaylock
+.config/swaylock/**
+.config/alacritty
+.config/alacritty/**
+{{ end }}
+

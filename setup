@@ -1,27 +1,23 @@
-#!/bin/bash
+#!/usr/bin/env bash
 set -euo pipefail
 
-XDG_CONFIG_HOME="$HOME/.config"
+REPO="git@github.com:alexandreachard/dotfiles.git"
 
-if command -v zsh >/dev/null; then
-  sudo chsh -s "$(command -v zsh)" "$USER"
+if ! command -v chezmoi >/dev/null 2>&1; then
+  sh -c "$(curl -fsLS https://get.chezmoi.io)" -- -b "$HOME/.local/bin"
+  export PATH="$HOME/.local/bin:$PATH"
 fi
 
-if ! command -v chezmoi >/dev/null; then
-  sh -c "$(curl -fsLS get.chezmoi.io)" -- init --apply git@github.com:alexandreachard/dotfiles.git
-fi
+chezmoi init --apply "$REPO"
 
-if [ ! -d "$HOME/.zsh" ]; then
-  mkdir -p "$HOME/.zsh"
-fi
+if command -v zsh >/dev/null 2>&1; then
+  ZSH_PATH="$(command -v zsh)"
 
-if [ ! -d "$HOME/.zsh/pure" ]; then
-  git clone https://github.com/sindresorhus/pure.git "$HOME/.zsh/pure"
+  if [[ "$SHELL" != "$ZSH_PATH" ]]; then
+    if [[ "$(uname -s)" == "Darwin" ]]; then
+      chsh -s "$ZSH_PATH"
+    else
+      sudo chsh -s "$ZSH_PATH" "$USER"
+    fi
+  fi
 fi
-
-if command -v alacritty >/dev/null; then
-  mkdir -p "$XDG_CONFIG_HOME"/alacritty/themes
-  git clone https://github.com/alacritty/alacritty-theme "$XDG_CONFIG_HOME"/alacritty/themes
-fi
-
-exit 0

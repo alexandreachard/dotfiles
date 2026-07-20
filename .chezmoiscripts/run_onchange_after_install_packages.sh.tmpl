@@ -1,3 +1,18 @@
-#!/bin/bash
+#!/usr/bin/env bash
+set -euo pipefail
+
 # packages hash: {{ include "dot_config/mise/config.toml" | sha256sum }}
-$HOME/.local/bin/mise trust $HOME/.config/mise/config.toml && $HOME/.local/bin/mise install
+
+MISE_BIN="$(command -v mise || true)"
+
+if [[ -z "$MISE_BIN" && -x "$HOME/.local/bin/mise" ]]; then
+  MISE_BIN="$HOME/.local/bin/mise"
+fi
+
+if [[ -z "$MISE_BIN" ]]; then
+  echo "mise not found, skipping mise install"
+  exit 0
+fi
+
+"$MISE_BIN" trust "$HOME/.config/mise/config.toml"
+"$MISE_BIN" install
