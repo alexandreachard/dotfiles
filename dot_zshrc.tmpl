@@ -15,6 +15,7 @@ path=(
   $HOME/.local/bin
   $HOME/.rd/bin
   $HOME/.opencode/bin
+  $HOME/.local/share/mise/installs/node/26.5.0/bin/
   $path
 )
 
@@ -110,6 +111,13 @@ alias t='tmux'
 alias gp='git pull'
 alias lg='lazygit'
 alias k='kubectl'
+alias kcc='kubectl config current-context'
+alias kg='kubectl get'
+alias kga='kubectl get all --all-namespaces'
+alias kgp='kubectl get pods'
+alias kgs='kubectl get services'
+alias ksgp='kubectl get pods -n kube-system'
+alias kuc='kubectl config use-context'
 
 if command -v trash >/dev/null 2>&1; then
   alias rm='trash -v'
